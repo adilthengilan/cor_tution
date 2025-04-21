@@ -14,7 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
   String userRole = 'Student';
   File? _profileImage;
   final ImagePicker _picker = ImagePicker();
-  
+
   // Pre-loaded asset image for profile (will be used if no image is picked)
   final String defaultProfileImage = 'asset/person.jpg';
   bool useAssetImage = true;
@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
   // Function to pick image from gallery or camera
   Future<void> _pickImage(ImageSource source) async {
     final pickedFile = await _picker.pickImage(source: source);
-    
+
     if (pickedFile != null) {
       setState(() {
         _profileImage = File(pickedFile.path);
@@ -33,13 +33,15 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // Function to show profile editing dialog
   void _showProfileEditDialog() {
-    final TextEditingController nameController = TextEditingController(text: userName);
-    
+    final TextEditingController nameController =
+        TextEditingController(text: userName);
+
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
         backgroundColor: Colors.grey[900],
-        title: const Text('Edit Profile', style: TextStyle(color: Colors.white)),
+        title:
+            const Text('Edit Profile', style: TextStyle(color: Colors.white)),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -84,7 +86,8 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel', style: TextStyle(color: Color(0xFFFFC107))),
+            child: const Text('Cancel',
+                style: TextStyle(color: Color(0xFFFFC107))),
           ),
           TextButton(
             onPressed: () {
@@ -93,7 +96,8 @@ class _HomeScreenState extends State<HomeScreen> {
               });
               Navigator.pop(context);
             },
-            child: const Text('Save', style: TextStyle(color: Color(0xFFFFC107))),
+            child:
+                const Text('Save', style: TextStyle(color: Color(0xFFFFC107))),
           ),
         ],
       ),
@@ -110,10 +114,10 @@ class _HomeScreenState extends State<HomeScreen> {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              Colors.black,  
-              const Color(0xFF121212),  
-              const Color(0xFF181818),  
-              const Color(0xFF202020),  
+              Colors.black,
+              const Color(0xFF121212),
+              const Color(0xFF181818),
+              const Color(0xFF202020),
             ],
             stops: const [0.1, 0.4, 0.7, 0.9],
           ),
@@ -150,20 +154,24 @@ class _HomeScreenState extends State<HomeScreen> {
                                       ),
                                     ],
                                     image: useAssetImage
-                                      ? const DecorationImage(
-                                          image: AssetImage('asset/person.jpg'),
-                                          fit: BoxFit.cover,
-                                        )
-                                      : _profileImage != null
-                                        ? DecorationImage(
-                                            image: FileImage(_profileImage!),
+                                        ? const DecorationImage(
+                                            image:
+                                                AssetImage('asset/person.jpg'),
                                             fit: BoxFit.cover,
                                           )
-                                        : null,
+                                        : _profileImage != null
+                                            ? DecorationImage(
+                                                image:
+                                                    FileImage(_profileImage!),
+                                                fit: BoxFit.cover,
+                                              )
+                                            : null,
                                   ),
-                                  child: (!useAssetImage && _profileImage == null)
-                                      ? const Icon(Icons.person, color: Colors.white)
-                                      : null,
+                                  child:
+                                      (!useAssetImage && _profileImage == null)
+                                          ? const Icon(Icons.person,
+                                              color: Colors.white)
+                                          : null,
                                 ),
                               ),
                               const SizedBox(width: 10),
@@ -200,7 +208,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: IconButton(
-                                  icon: const Icon(Icons.search, color: Colors.white),
+                                  icon: const Icon(Icons.search,
+                                      color: Colors.white),
                                   onPressed: () {},
                                 ),
                               ),
@@ -211,7 +220,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: IconButton(
-                                  icon: const Icon(Icons.notifications_outlined, color: Colors.white),
+                                  icon: const Icon(Icons.notifications_outlined,
+                                      color: Colors.white),
                                   onPressed: () {},
                                 ),
                               ),
@@ -222,7 +232,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                 ),
-                
                 SliverToBoxAdapter(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -247,11 +256,13 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Row(
                               children: [
                                 IconButton(
-                                  icon: const Icon(Icons.arrow_back_ios, color: Colors.white, size: 18),
+                                  icon: const Icon(Icons.arrow_back_ios,
+                                      color: Colors.white, size: 18),
                                   onPressed: () {},
                                 ),
                                 IconButton(
-                                  icon: const Icon(Icons.arrow_forward_ios, color: Colors.white, size: 18),
+                                  icon: const Icon(Icons.arrow_forward_ios,
+                                      color: Colors.white, size: 18),
                                   onPressed: () {},
                                 ),
                               ],
@@ -263,7 +274,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                 ),
-                
                 SliverToBoxAdapter(
                   child: SizedBox(
                     height: 140,
@@ -271,16 +281,20 @@ class _HomeScreenState extends State<HomeScreen> {
                       scrollDirection: Axis.horizontal,
                       physics: const BouncingScrollPhysics(),
                       children: [
-                        _buildCourseCard('Design', '17 courses', const Color(0xFFFFC107), Icons.design_services),
-                        _buildCourseCard('Programming', '8 courses', const Color(0xFF039BE5), Icons.code),
-                        _buildCourseCard('Language', '12 courses', const Color(0xFF0277BD), Icons.language),
-                        _buildCourseCard('Digital Marketing', '9 courses', const Color(0xFF4CAF50), Icons.trending_up),
-                        _buildCourseCard('Photography', '6 courses', const Color(0xFFE64A19), Icons.camera_alt),
+                        _buildCourseCard('Design', '17 courses',
+                            const Color(0xFFFFC107), Icons.design_services),
+                        _buildCourseCard('Programming', '8 courses',
+                            const Color(0xFF039BE5), Icons.code),
+                        _buildCourseCard('Language', '12 courses',
+                            const Color(0xFF0277BD), Icons.language),
+                        _buildCourseCard('Digital Marketing', '9 courses',
+                            const Color(0xFF4CAF50), Icons.trending_up),
+                        _buildCourseCard('Photography', '6 courses',
+                            const Color(0xFFE64A19), Icons.camera_alt),
                       ],
                     ),
                   ),
                 ),
-                
                 SliverToBoxAdapter(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -298,7 +312,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                 ),
-                
                 SliverList(
                   delegate: SliverChildListDelegate([
                     _buildLessonCard(
@@ -354,7 +367,7 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: Container(
         height: 70,
         decoration: BoxDecoration(
-          color: const Color(0xFFFFC107),  // Yellow navigation bar
+          color: const Color.fromARGB(255, 0, 0, 0), // Yellow navigation bar
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.3),
@@ -382,7 +395,8 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildCourseCard(String title, String subtitle, Color color, IconData iconData) {
+  Widget _buildCourseCard(
+      String title, String subtitle, Color color, IconData iconData) {
     return Container(
       width: 160,
       margin: const EdgeInsets.only(right: 15),
@@ -437,7 +451,8 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildLessonCard(String title, String lessons, double progress, Color iconColor, IconData iconData) {
+  Widget _buildLessonCard(String title, String lessons, double progress,
+      Color iconColor, IconData iconData) {
     return Container(
       margin: const EdgeInsets.only(bottom: 15),
       padding: const EdgeInsets.all(15),
@@ -499,7 +514,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     Text(
                       '${(progress * 100).toInt()}% complete',
                       style: TextStyle(
-                        color: progress > 0 ? const Color(0xFFFFC107) : Colors.grey[400],
+                        color: progress > 0
+                            ? const Color(0xFFFFC107)
+                            : Colors.grey[400],
                         fontSize: 14,
                       ),
                     ),
@@ -511,7 +528,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: LinearProgressIndicator(
                     value: progress,
                     backgroundColor: Colors.white.withOpacity(0.1),
-                    valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFFFFC107)),
+                    valueColor:
+                        const AlwaysStoppedAnimation<Color>(Color(0xFFFFC107)),
                     minHeight: 6,
                   ),
                 ),
@@ -530,12 +548,16 @@ class _HomeScreenState extends State<HomeScreen> {
         Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: isSelected ? Colors.black : Colors.transparent,
+            color: isSelected
+                ? const Color.fromARGB(255, 231, 216, 0)
+                : Colors.transparent,
             borderRadius: BorderRadius.circular(12),
           ),
           child: Icon(
             icon,
-            color: isSelected ? Colors.white : Colors.black,
+            color: isSelected
+                ? Colors.white
+                : const Color.fromARGB(255, 255, 255, 0),
             size: 24,
           ),
         ),
