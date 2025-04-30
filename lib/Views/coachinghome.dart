@@ -1,10 +1,12 @@
-import 'package:coaching_academy/views/classes.dart';
-import 'package:coaching_academy/views/notificationsi.dart';
-import 'package:coaching_academy/views/search.dart';
+
+import 'package:corona_lms/views/search.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'dart:io';
+
+import 'classes.dart';
+import 'notificationsi.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

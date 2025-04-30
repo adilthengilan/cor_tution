@@ -1,4 +1,3 @@
-import 'package:corona_lms/Views/homepage.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -18,8 +17,8 @@ class _LoginPageState extends State<LoginPage> {
 
   // Define the color scheme based on the logo
   final Color primaryYellow = Color(0xFFFFC107); // Amber from logo
-  final Color primaryBlue = Color(0xFF00A0E4); // Blue from logo
-  final Color primaryBlack = Color(0xFF212121); // Black from logo
+  final Color primaryBlue = Color(0xFF00A0E4);   // Blue from logo
+  final Color primaryBlack = Color(0xFF212121);  // Black from logo
 
   @override
   void dispose() {
@@ -33,30 +32,25 @@ class _LoginPageState extends State<LoginPage> {
       setState(() {
         _isLoading = true;
       });
-
+      
       // Simulate network delay
       await Future.delayed(const Duration(seconds: 2));
-
+      
       // TODO: Implement actual login logic with your backend
-
+      
       setState(() {
         _isLoading = false;
       });
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => HomeScreen(),
-          ));
+      
       // For demo purposes, show a success message
       if (!mounted) return;
-
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Login successful!'),
           backgroundColor: primaryBlue,
         ),
       );
-
+      
       // TODO: Navigate to home page after successful login
     }
   }
@@ -137,13 +131,14 @@ class _LoginPageState extends State<LoginPage> {
                             left: 25,
                             child: RotationTransition(
                               turns: AlwaysStoppedAnimation(-40 / 360),
+                             
                             ),
                           ),
                         ],
                       ),
                     ),
                   ),
-
+                  
                   // Welcome message
                   RichText(
                     textAlign: TextAlign.center,
@@ -169,7 +164,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   const SizedBox(height: 30),
-
+                  
                   // Email Field with improved styling
                   Container(
                     decoration: BoxDecoration(
@@ -189,13 +184,10 @@ class _LoginPageState extends State<LoginPage> {
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                         hintText: 'Email or Phone Number',
-                        hintStyle:
-                            TextStyle(color: Colors.grey[400], fontSize: 14),
-                        prefixIcon:
-                            Icon(Icons.alternate_email, color: primaryBlue),
+                        hintStyle: TextStyle(color: Colors.grey[400], fontSize: 14),
+                        prefixIcon: Icon(Icons.alternate_email, color: primaryBlue),
                         border: InputBorder.none,
-                        contentPadding:
-                            const EdgeInsets.symmetric(vertical: 15),
+                        contentPadding: const EdgeInsets.symmetric(vertical: 15),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
                           borderSide: BorderSide(color: primaryBlue, width: 1),
@@ -206,9 +198,7 @@ class _LoginPageState extends State<LoginPage> {
                           return 'Please enter your email';
                         }
                         // Simple email validation
-                        if (value.contains('@') &&
-                            !RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
-                                .hasMatch(value)) {
+                        if (value.contains('@') && !RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
                           return 'Please enter a valid email';
                         }
                         return null;
@@ -216,7 +206,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   const SizedBox(height: 16),
-
+                  
                   // Password Field with improved styling
                   Container(
                     decoration: BoxDecoration(
@@ -236,15 +226,11 @@ class _LoginPageState extends State<LoginPage> {
                       obscureText: _obscurePassword,
                       decoration: InputDecoration(
                         hintText: 'Password',
-                        hintStyle:
-                            TextStyle(color: Colors.grey[400], fontSize: 14),
-                        prefixIcon:
-                            Icon(Icons.lock_outline, color: primaryBlue),
+                        hintStyle: TextStyle(color: Colors.grey[400], fontSize: 14),
+                        prefixIcon: Icon(Icons.lock_outline, color: primaryBlue),
                         suffixIcon: IconButton(
                           icon: Icon(
-                            _obscurePassword
-                                ? Icons.visibility_off
-                                : Icons.visibility,
+                            _obscurePassword ? Icons.visibility_off : Icons.visibility,
                             color: Colors.grey,
                           ),
                           onPressed: () {
@@ -254,8 +240,7 @@ class _LoginPageState extends State<LoginPage> {
                           },
                         ),
                         border: InputBorder.none,
-                        contentPadding:
-                            const EdgeInsets.symmetric(vertical: 15),
+                        contentPadding: const EdgeInsets.symmetric(vertical: 15),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
                           borderSide: BorderSide(color: primaryBlue, width: 1),
@@ -273,7 +258,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   const SizedBox(height: 16),
-
+                  
                   // Remember Me and Forgot Password Row
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -307,7 +292,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ],
                       ),
-
+                      
                       // Forgot Password
                       TextButton(
                         onPressed: () {
@@ -330,7 +315,7 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                   const SizedBox(height: 30),
-
+                  
                   // Login Button with enhanced styling
                   Container(
                     height: 55,
@@ -371,13 +356,12 @@ class _LoginPageState extends State<LoginPage> {
                             )
                           : const Text(
                               'Login',
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                     ),
                   ),
                   const SizedBox(height: 30),
-
+                  
                   // Or Login with - with decoration
                   Row(
                     children: [
@@ -419,7 +403,7 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                   const SizedBox(height: 24),
-
+                  
                   // Social Login Buttons with improved styling
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -447,7 +431,7 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                   const SizedBox(height: 30),
-
+                  
                   // Don't have account
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -474,7 +458,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ],
                   ),
-
+                  
                   // Bottom decoration - horizontal line with logo colors
                   const SizedBox(height: 20),
                   Container(
@@ -496,7 +480,7 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
-
+  
   // Enhanced social login button
   Widget _socialLoginButton({
     required IconData icon,
