@@ -1,5 +1,9 @@
 
-import 'package:corona_lms/views/Exam/exam.dart';
+
+import 'package:corona_lms/views/Home/dashboard.dart';
+import 'package:corona_lms/views/Home/mainscreen.dart';
+import 'package:corona_lms/views/login.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -31,7 +35,7 @@ class MyApp extends StatelessWidget {
           elevation: 0,
         ),
       ),
-      home: const ExamsScreen(),
+      home: const MainScreen(),
     );
   }
 }

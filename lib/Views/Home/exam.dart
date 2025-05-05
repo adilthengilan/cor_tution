@@ -1,6 +1,5 @@
-// exams_screen.dart - List of available exams
 
-import 'package:corona_lms/views/Exam/exampage.dart';
+import 'package:corona_lms/views/Home/exampage.dart';
 import 'package:flutter/material.dart';
 
 

@@ -2,7 +2,7 @@ class NotificationItem {
   final String title;
   final String message;
   final DateTime date;
-  final bool isRead;
+  bool isRead;
 
   NotificationItem({
     required this.title,

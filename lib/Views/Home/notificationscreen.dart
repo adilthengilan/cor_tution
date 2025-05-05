@@ -1,5 +1,5 @@
 
-import 'package:corona_lms/views/classes.dart';
+import 'package:corona_lms/views/models/notification.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
