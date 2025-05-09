@@ -1,134 +1,198 @@
-
 import 'package:corona_lms/views/Home/exampage.dart';
 import 'package:flutter/material.dart';
 
-
-class ExamsScreen extends StatelessWidget {
-  const ExamsScreen({Key? key}) : super(key: key);
+class ExamScreen extends StatelessWidget {
+  const ExamScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // List of available exams
-    final List<Map<String, dynamic>> exams = [
-      {
-        'title': '10th Chemistry - Chemical Reactions',
-        'subject': 'Chemistry',
-        'duration': '30 minutes',
-        'questions': 5,
-        'color': Colors.purple,
-        'icon': Icons.science
-      },
-      {
-        'title': '10th Chemistry - Periodic Table',
-        'subject': 'Chemistry',
-        'duration': '25 minutes',
-        'questions': 5,
-        'color': Colors.blue,
-        'icon': Icons.table_chart
-      },
-      {
-        'title': '10th Chemistry - Acids and Bases',
-        'subject': 'Chemistry',
-        'duration': '35 minutes',
-        'questions': 5,
-        'color': Colors.green,
-        'icon': Icons.science_outlined
-      },
-      {
-        'title': '10th Chemistry - Carbon Compounds',
-        'subject': 'Chemistry',
-        'duration': '40 minutes',
-        'questions': 5,
-        'color': Colors.orange,
-        'icon': Icons.hexagon
-      },
-      {
-        'title': '10th Chemistry - Metals',
-        'subject': 'Chemistry',
-        'duration': '30 minutes',
-        'questions': 5,
-        'color': Colors.red,
-        'icon': Icons.blur_circular
-      },
-    ];
-
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Available Exams'),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
+        title: const Text(
+          'My Exams',
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        backgroundColor: const Color(0xFF33C4A9),
+        foregroundColor: Colors.white,
         elevation: 0,
       ),
-      body: Container(
-        color: Colors.white,
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+      body: Column(
+        children: [
+          // Search bar
+          Container(
+            padding: const EdgeInsets.all(20),
+            color: const Color(0xFF33C4A9),
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: const Row(
+                children: [
+                  Icon(Icons.search, color: Colors.grey),
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: 'Search for any exam',
+                        border: InputBorder.none,
+                        hintStyle: TextStyle(color: Colors.grey),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          
+          // Category tabs
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 15),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.05),
+                  blurRadius: 10,
+                  offset: const Offset(0, 3),
+                ),
+              ],
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                const Text(
-                  'Kerala State Syllabus',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black87,
-                  ),
+                _buildCategoryTab('All', Icons.apps, true),
+                _buildCategoryTab('Chemistry', Icons.science, false),
+                _buildCategoryTab('Physics', Icons.bolt, false),
+                _buildCategoryTab('Maths', Icons.calculate, false),
+              ],
+            ),
+          ),
+          
+          // Exams list
+          Expanded(
+            child: ListView(
+              padding: const EdgeInsets.all(20),
+              children: [
+                _buildExamItem(
+                  context,
+                  'Chemistry',
+                  'Kerala State Syllabus - 10th Standard',
+                  Icons.science,
+                  Colors.blue,
+                  5,
+                  30,
                 ),
-                const SizedBox(height: 10),
-                Text(
-                  '10th Standard Chemistry Exams',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.grey[700],
-                  ),
+                _buildExamItem(
+                  context,
+                  'Physics',
+                  'Kerala State Syllabus - 10th Standard',
+                  Icons.bolt,
+                  Colors.orange,
+                  5,
+                  30,
                 ),
-                const SizedBox(height: 30),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: exams.length,
-                    itemBuilder: (context, index) {
-                      final exam = exams[index];
-                      return _buildExamCard(
-                        context,
-                        exam['title'],
-                        exam['subject'],
-                        exam['duration'],
-                        exam['questions'],
-                        exam['color'],
-                        exam['icon'],
-                        index,
-                      );
-                    },
-                  ),
+                _buildExamItem(
+                  context,
+                  'Mathematics',
+                  'Kerala State Syllabus - 10th Standard',
+                  Icons.calculate,
+                  Colors.green,
+                  5,
+                  30,
+                ),
+                _buildExamItem(
+                  context,
+                  'Biology',
+                  'Kerala State Syllabus - 10th Standard',
+                  Icons.biotech,
+                  Colors.purple,
+                  5,
+                  30,
                 ),
               ],
             ),
           ),
-        ),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 1,
+        selectedItemColor: const Color(0xFF33C4A9),
+        unselectedItemColor: Colors.grey,
+        type: BottomNavigationBarType.fixed,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.library_books),
+            label: 'My Exams',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.chat),
+            label: 'Chats',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
+        ],
       ),
     );
   }
 
-  Widget _buildExamCard(
+  Widget _buildCategoryTab(String title, IconData icon, bool isActive) {
+    return Column(
+      children: [
+        Container(
+          padding: const EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: isActive 
+              ? const Color(0xFF33C4A9).withOpacity(0.1) 
+              : Colors.grey.withOpacity(0.1),
+            shape: BoxShape.circle,
+          ),
+          child: Icon(
+            icon,
+            color: isActive ? const Color(0xFF33C4A9) : Colors.grey[600],
+            size: 24,
+          ),
+        ),
+        const SizedBox(height: 5),
+        Text(
+          title,
+          style: TextStyle(
+            color: isActive ? const Color(0xFF33C4A9) : Colors.grey[800],
+            fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildExamItem(
     BuildContext context,
-    String title,
     String subject,
-    String duration,
-    int questionCount,
-    Color color,
+    String description,
     IconData icon,
-    int examIndex,
+    Color color,
+    int questions,
+    int minutes,
   ) {
     return GestureDetector(
       onTap: () {
-        // Navigate to the exam page when an exam card is tapped
         Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => ExamPage(
-              examTitle: title,
-              examIndex: examIndex,
+              subjectName: subject,
+              subjectIcon: icon.codePoint.toString(),
             ),
           ),
         );
@@ -142,53 +206,55 @@ class ExamsScreen extends StatelessWidget {
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.05),
-              spreadRadius: 1,
               blurRadius: 10,
-              offset: const Offset(0, 4),
+              offset: const Offset(0, 3),
             ),
           ],
           border: Border.all(
-            color: color.withOpacity(0.3),
-            width: 1,
+            color: Colors.grey.withOpacity(0.1),
           ),
         ),
         child: Row(
           children: [
             Container(
-              width: 60,
-              height: 60,
+              padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
                 color: color.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(15),
+                shape: BoxShape.circle,
               ),
               child: Icon(
                 icon,
                 color: color,
-                size: 30,
+                size: 28,
               ),
             ),
-            const SizedBox(width: 20),
+            const SizedBox(width: 15),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    title,
+                    subject,
                     style: const TextStyle(
+                      fontSize: 18,
                       fontWeight: FontWeight.bold,
                       color: Colors.black87,
-                      fontSize: 16,
                     ),
                   ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 5),
+                  Text(
+                    description,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.grey[600],
+                    ),
+                  ),
+                  const SizedBox(height: 10),
                   Row(
                     children: [
-                      _buildExamDetail(Icons.subject, subject),
-                      const SizedBox(width: 15),
-                      _buildExamDetail(Icons.timer, duration),
-                      const SizedBox(width: 15),
-                      _buildExamDetail(
-                          Icons.help_outline, '$questionCount Questions'),
+                      _buildExamDetailChip('$questions Questions', Icons.help_outline),
+                      const SizedBox(width: 10),
+                      _buildExamDetailChip('$minutes mins', Icons.timer_outlined),
                     ],
                   ),
                 ],
@@ -196,8 +262,8 @@ class ExamsScreen extends StatelessWidget {
             ),
             const Icon(
               Icons.arrow_forward_ios,
-              color: Colors.black54,
-              size: 18,
+              color: Colors.grey,
+              size: 16,
             ),
           ],
         ),
@@ -205,23 +271,30 @@ class ExamsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildExamDetail(IconData icon, String text) {
-    return Row(
-      children: [
-        Icon(
-          icon,
-          size: 14,
-          color: Colors.black54,
-        ),
-        const SizedBox(width: 4),
-        Text(
-          text,
-          style: TextStyle(
-            fontSize: 12,
+  Widget _buildExamDetailChip(String label, IconData icon) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+      decoration: BoxDecoration(
+        color: Colors.grey.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Row(
+        children: [
+          Icon(
+            icon,
             color: Colors.grey[700],
+            size: 14,
           ),
-        ),
-      ],
+          const SizedBox(width: 5),
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 12,
+              color: Colors.grey[700],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

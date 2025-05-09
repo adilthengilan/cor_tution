@@ -17,7 +17,7 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _screens = [
     const DashboardScreen(),  // Changed from HomeScreen to DashboardScreen
     const ClassesScreen(),    // New screen for classes
-    const ExamsScreen(),      // New screen for exams
+    const ExamScreen(),      // New screen for exams
     const ProfileScreen(),
   ];
 

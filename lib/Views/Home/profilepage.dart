@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+  const ProfileScreen({super.key});
 
   @override
   State<ProfileScreen> createState() => _TuitionCenterProfileState();
@@ -300,8 +300,8 @@ class _TuitionCenterProfileState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Excel Education Center'),
-        backgroundColor: Colors.indigo,
+        title: const Text('Corona Coaching Centre'),
+        backgroundColor: const Color(0xFF37D3A6), // Green color from the design
         foregroundColor: Colors.white,
         elevation: 0,
         actions: [
@@ -333,16 +333,17 @@ class _TuitionCenterProfileState extends State<ProfileScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _showActionDialog,
-        backgroundColor: Colors.indigo,
+        backgroundColor: const Color(0xFF37D3A6), // Green color from the design
         child: const Icon(Icons.add),
         tooltip: 'Add Action',
       ),
+    
     );
   }
 
   Widget _buildProfileHeader() {
     return Container(
-      color: Colors.indigo,
+      color: const Color(0xFF37D3A6), // Green color from the design
       padding: const EdgeInsets.only(
         left: 20,
         right: 20,
@@ -368,7 +369,7 @@ class _TuitionCenterProfileState extends State<ProfileScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      'Michael Johnson',
+                      'Husain Ali',  // Changed to match the design image
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 22,
@@ -377,7 +378,7 @@ class _TuitionCenterProfileState extends State<ProfileScreen> {
                     ),
                     const SizedBox(height: 5),
                     Text(
-                      'Grade 10 • Science Program',
+                      'Class 11 English, Math',  // Changed to match the design image
                       style: TextStyle(
                         color: Colors.white.withOpacity(0.9),
                         fontSize: 14,
@@ -551,7 +552,7 @@ class _TuitionCenterProfileState extends State<ProfileScreen> {
           Text(
             'View All',
             style: TextStyle(
-              color: Colors.indigo.shade400,
+              color: const Color(0xFF37D3A6), // Green color from the design
               fontSize: 14,
               fontWeight: FontWeight.w500,
             ),
@@ -681,14 +682,14 @@ class _TuitionCenterProfileState extends State<ProfileScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                 decoration: BoxDecoration(
                   color: index == 0
-                      ? Colors.green.withOpacity(0.1)
+                      ? const Color(0xFF37D3A6).withOpacity(0.1)  // Green color from the design
                       : Colors.blue.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(
                   index == 0 ? 'Join' : 'Prep',
                   style: TextStyle(
-                    color: index == 0 ? Colors.green : Colors.blue,
+                    color: index == 0 ? const Color(0xFF37D3A6) : Colors.blue,  // Green color from the design
                     fontWeight: FontWeight.bold,
                     fontSize: 12,
                   ),
