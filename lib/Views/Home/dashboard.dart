@@ -460,7 +460,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             children: [
               CircleAvatar(
                 radius: 25,
-                backgroundImage: AssetImage('assets/person.jpg'),
+                backgroundImage: AssetImage('assets/manperson.jpeg'),
               ),
               const SizedBox(width: 15),
               Expanded(

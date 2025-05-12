@@ -19,6 +19,12 @@ class _TuitionCenterProfileState extends State<ProfileScreen> {
     'Need help with calculus homework - Sarah'
   ];
 
+  // Added fee details
+  final bool _feePaid = true;
+  final String _feeStatus = "Paid for May 2025";
+  final String _email = "husam.ali@gmail.com";
+  final String _contact = "+918065423654";
+
   @override
   void dispose() {
     _messageController.dispose();
@@ -337,7 +343,6 @@ class _TuitionCenterProfileState extends State<ProfileScreen> {
         child: const Icon(Icons.add),
         tooltip: 'Add Action',
       ),
-    
     );
   }
 
@@ -368,7 +373,7 @@ class _TuitionCenterProfileState extends State<ProfileScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      'Husam Ali',  // Changed to match the design image
+                      'Husam Ali', // Changed to match the design image
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 22,
@@ -377,31 +382,108 @@ class _TuitionCenterProfileState extends State<ProfileScreen> {
                     ),
                     const SizedBox(height: 5),
                     Text(
-                      'Class 11, Math',  // Changed to match the design image
+                      'Class 11, Math', // Changed to match the design image
                       style: TextStyle(
                         color: Colors.white.withOpacity(0.9),
                         fontSize: 14,
                       ),
                     ),
+                    const SizedBox(height: 5),
+                    // Added Email
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.email,
+                          size: 14,
+                          color: Colors.white.withOpacity(0.9),
+                        ),
+                        const SizedBox(width: 5),
+                        Text(
+                          _email,
+                          style: TextStyle(
+                            color: Colors.white.withOpacity(0.9),
+                            fontSize: 12,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 3),
+                    // Added Contact
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.phone,
+                          size: 14,
+                          color: Colors.white.withOpacity(0.9),
+                        ),
+                        const SizedBox(width: 5),
+                        Text(
+                          _contact,
+                          style: TextStyle(
+                            color: Colors.white.withOpacity(0.9),
+                            fontSize: 12,
+                          ),
+                        ),
+                      ],
+                    ),
                     const SizedBox(height: 8),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 10,
-                        vertical: 5,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.green.withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Text(
-                        'Premium Member',
-                        style: TextStyle(
-                          color: Colors.green.shade100,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 12,
+                    Row(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 10,
+                            vertical: 5,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.green.withOpacity(0.2),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Text(
+                            'Premium Member',
+                            style: TextStyle(
+                              color: Colors.green.shade100,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        // Added Fee Status
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 10,
+                            vertical: 5,
+                          ),
+                          decoration: BoxDecoration(
+                            color: _feePaid
+                                ? Colors.green.withOpacity(0.2)
+                                : Colors.red.withOpacity(0.2),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Text(
+                            _feePaid ? 'Fee Paid' : 'Fee Due',
+                            style: TextStyle(
+                              color: _feePaid
+                                  ? Colors.green.shade100
+                                  : Colors.red.shade100,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    if (_feePaid)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 4),
+                        child: Text(
+                          _feeStatus,
+                          style: TextStyle(
+                            color: Colors.white.withOpacity(0.8),
+                            fontSize: 11,
+                          ),
                         ),
                       ),
-                    ),
                   ],
                 ),
               ),
@@ -571,14 +653,6 @@ class _TuitionCenterProfileState extends State<ProfileScreen> {
         'color': Colors.blue,
         'icon': Icons.calculate,
       },
-      {
-        'subject': 'Physics',
-        'topic': 'Electromagnetic Fields',
-        'time': 'Tomorrow, 5:00 PM - 6:30 PM',
-        'teacher': 'Dr. Robert Chen',
-        'color': Colors.orange,
-        'icon': Icons.science,
-      },
     ];
 
     return ListView.builder(
@@ -678,17 +752,21 @@ class _TuitionCenterProfileState extends State<ProfileScreen> {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                 decoration: BoxDecoration(
                   color: index == 0
-                      ? const Color(0xFF37D3A6).withOpacity(0.1)  // Green color from the design
+                      ? const Color(0xFF37D3A6)
+                          .withOpacity(0.1) // Green color from the design
                       : Colors.blue.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(
                   index == 0 ? 'Join' : 'Prep',
                   style: TextStyle(
-                    color: index == 0 ? const Color(0xFF37D3A6) : Colors.blue,  // Green color from the design
+                    color: index == 0
+                        ? const Color(0xFF37D3A6)
+                        : Colors.blue, // Green color from the design
                     fontWeight: FontWeight.bold,
                     fontSize: 12,
                   ),
@@ -747,8 +825,8 @@ class _TuitionCenterProfileState extends State<ProfileScreen> {
                   children: [
                     if (isLate)
                       Container(
-                        padding:
-                            const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8, vertical: 3),
                         margin: const EdgeInsets.only(bottom: 5),
                         decoration: BoxDecoration(
                           color: Colors.orange.withOpacity(0.1),
