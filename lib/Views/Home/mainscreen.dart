@@ -1,6 +1,6 @@
 import 'package:corona_lms/views/Home/classes.dart';
 import 'package:corona_lms/views/Home/dashboard.dart';
-import 'package:corona_lms/views/Home/exam.dart';
+import 'package:corona_lms/views/Home/Exam.dart';
 import 'package:corona_lms/views/Home/profilepage.dart';
 import 'package:flutter/material.dart';
 
