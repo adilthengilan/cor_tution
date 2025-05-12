@@ -15,7 +15,7 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   final String userName = 'Jamsheer';
   final String userRole = 'Student';
-  
+
   // Sample notifications data
   final List<NotificationItem> _notifications = [
     NotificationItem(
@@ -37,7 +37,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       isRead: true,
     ),
   ];
-  
+
   // Sample activities data
   final List<ActivityItem> _activities = [
     ActivityItem(
@@ -73,7 +73,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       isNew: false,
     ),
   ];
-  
+
   // Get greeting based on time of day
   String _getGreeting() {
     final hour = DateTime.now().hour;
@@ -85,7 +85,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       return 'Good Evening';
     }
   }
-  
+
   // Get unread notifications count
   int get _unreadNotificationsCount {
     return _notifications.where((notification) => !notification.isRead).length;
@@ -233,7 +233,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ],
                 ),
               ),
-              
+
               // Featured categories section
               Padding(
                 padding: const EdgeInsets.all(20),
@@ -266,18 +266,23 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: [
-                          _buildCategoryItem('Science', Icons.science, Colors.orange),
-                          _buildCategoryItem('Secondary', Icons.school, Colors.green),
-                          _buildCategoryItem('High School', Icons.history_edu, Colors.blue),
-                          _buildCategoryItem('O Level', Icons.book, Colors.purple),
-                          _buildCategoryItem('Tuition', Icons.people, Colors.red),
+                          _buildCategoryItem(
+                              'Science', Icons.science, Colors.orange),
+                          _buildCategoryItem(
+                              'Secondary', Icons.school, Colors.green),
+                          _buildCategoryItem(
+                              'High School', Icons.history_edu, Colors.blue),
+                          _buildCategoryItem(
+                              'O Level', Icons.book, Colors.purple),
+                          _buildCategoryItem(
+                              'Tuition', Icons.people, Colors.red),
                         ],
                       ),
                     ),
                   ],
                 ),
               ),
-              
+
               // Featured tuitions section
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -314,12 +319,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       'Need a math teacher for class 9 student',
                       'April 10, 2025',
                       '₹3,200/month',
-                      'asset/person.jpg',
+                      'assets/person.jpg',
                     ),
                   ],
                 ),
               ),
-              
+
               // All tuitions section
               Padding(
                 padding: const EdgeInsets.all(20),
@@ -342,7 +347,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       'I need a Math and English teacher for class 6',
                       'April 12, 2025',
                       '₹2,750/month',
-                      'asset/person.jpg',
+                      'assets/manperson.jpeg',
                     ),
                     const SizedBox(height: 15),
                     Container(
@@ -363,7 +368,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ],
                 ),
               ),
-              
+
               // Recent activities section
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -378,7 +383,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       ),
                     ),
                     const SizedBox(height: 15),
-                    ..._activities.map((activity) => _buildActivityItem(activity)),
+                    ..._activities
+                        .map((activity) => _buildActivityItem(activity)),
                     const SizedBox(height: 15),
                   ],
                 ),
@@ -389,7 +395,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       ),
     );
   }
-  
+
   // Category item widget
   Widget _buildCategoryItem(String title, IconData icon, Color color) {
     return Container(
@@ -423,7 +429,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       ),
     );
   }
-  
+
   // Tuition card widget
   Widget _buildTuitionCard(
     String name,
@@ -454,7 +460,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             children: [
               CircleAvatar(
                 radius: 25,
-                backgroundImage: AssetImage(image),
+                backgroundImage: AssetImage('assets/person.jpg'),
               ),
               const SizedBox(width: 15),
               Expanded(
@@ -488,7 +494,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
           Row(
             children: [
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                 decoration: BoxDecoration(
                   color: Colors.green.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(5),
@@ -504,7 +511,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
               ),
               const SizedBox(width: 10),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                 decoration: BoxDecoration(
                   color: Colors.red.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(5),
@@ -557,7 +565,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 10),
                     ),
                     child: const Text('Apply'),
                   ),
@@ -569,7 +578,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       ),
     );
   }
-  
+
   // Activity item widget
   Widget _buildActivityItem(ActivityItem activity) {
     return Container(
@@ -619,7 +628,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ),
                     if (activity.isNew)
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8, vertical: 4),
                         decoration: BoxDecoration(
                           color: Colors.red.withOpacity(0.1),
                           borderRadius: BorderRadius.circular(5),

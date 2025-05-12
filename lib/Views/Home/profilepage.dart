@@ -359,8 +359,7 @@ class _TuitionCenterProfileState extends State<ProfileScreen> {
                 backgroundColor: Colors.white.withOpacity(0.9),
                 child: const CircleAvatar(
                   radius: 38,
-                  backgroundImage: NetworkImage(
-                      'https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80'),
+                  backgroundImage: AssetImage('assets/manperson.jpeg'),
                 ),
               ),
               const SizedBox(width: 20),
@@ -369,7 +368,7 @@ class _TuitionCenterProfileState extends State<ProfileScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      'Husain Ali',  // Changed to match the design image
+                      'Husam Ali',  // Changed to match the design image
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 22,
@@ -378,7 +377,7 @@ class _TuitionCenterProfileState extends State<ProfileScreen> {
                     ),
                     const SizedBox(height: 5),
                     Text(
-                      'Class 11 English, Math',  // Changed to match the design image
+                      'Class 11, Math',  // Changed to match the design image
                       style: TextStyle(
                         color: Colors.white.withOpacity(0.9),
                         fontSize: 14,
