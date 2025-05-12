@@ -8,6 +8,75 @@ class ClassesScreen extends StatefulWidget {
 }
 
 class _ClassesScreenState extends State<ClassesScreen> {
+  // Added a method to handle joining the Mathematics class
+  void _joinMathematicsClass() {
+    // Show a bottom sheet with class joining details
+    showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(25),
+        ),
+      ),
+      builder: (context) {
+        return Container(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Text(
+                'Joining Mathematics Class',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                'Class: Algebra',
+                style: TextStyle(fontSize: 16),
+              ),
+              const Text(
+                'Teacher: Ms. Sarah Johnson',
+                style: TextStyle(fontSize: 16),
+              ),
+              const Text(
+                'Time: 9:00 AM - 10:30 AM',
+                style: TextStyle(fontSize: 16),
+              ),
+              const SizedBox(height: 30),
+              ElevatedButton(
+                onPressed: () {
+                  // Simulate joining the class
+                  Navigator.pop(context);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Successfully joined Mathematics class!'),
+                      backgroundColor: Colors.green,
+                    ),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.green,
+                  foregroundColor: Colors.white,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 50, 
+                    vertical: 15,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                child: const Text('Confirm Join'),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -228,7 +297,8 @@ class _ClassesScreenState extends State<ClassesScreen> {
               const SizedBox(width: 15),
               Expanded(
                 child: ElevatedButton(
-                  onPressed: () {},
+                  // Updated to call _joinMathematicsClass method
+                  onPressed: _joinMathematicsClass,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
                     foregroundColor: Colors.white,
