@@ -49,7 +49,7 @@ class ExamScreen extends StatelessWidget {
               ),
             ),
           ),
-          
+
           // Category tabs
           Container(
             padding: const EdgeInsets.symmetric(vertical: 15),
@@ -73,7 +73,7 @@ class ExamScreen extends StatelessWidget {
               ],
             ),
           ),
-          
+
           // Exams list
           Expanded(
             child: ListView(
@@ -120,7 +120,6 @@ class ExamScreen extends StatelessWidget {
           ),
         ],
       ),
-     
     );
   }
 
@@ -130,9 +129,9 @@ class ExamScreen extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: isActive 
-              ? const Color(0xFF33C4A9).withOpacity(0.1) 
-              : Colors.grey.withOpacity(0.1),
+            color: isActive
+                ? const Color(0xFF33C4A9).withOpacity(0.1)
+                : Colors.grey.withOpacity(0.1),
             shape: BoxShape.circle,
           ),
           child: Icon(
@@ -168,6 +167,7 @@ class ExamScreen extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => ExamPage(
+              // examIndex: 1, examTitle: 'Maths',
               subjectName: subject,
               subjectIcon: icon.codePoint.toString(),
             ),
@@ -229,9 +229,11 @@ class ExamScreen extends StatelessWidget {
                   const SizedBox(height: 10),
                   Row(
                     children: [
-                      _buildExamDetailChip('$questions Questions', Icons.help_outline),
+                      _buildExamDetailChip(
+                          '$questions Questions', Icons.help_outline),
                       const SizedBox(width: 10),
-                      _buildExamDetailChip('$minutes mins', Icons.timer_outlined),
+                      _buildExamDetailChip(
+                          '$minutes mins', Icons.timer_outlined),
                     ],
                   ),
                 ],

@@ -1,6 +1,6 @@
+import 'package:corona_lms/Views/Home/exam.dart';
 import 'package:corona_lms/views/Home/classes.dart';
 import 'package:corona_lms/views/Home/dashboard.dart';
-import 'package:corona_lms/views/Home/exam.dart';
 import 'package:corona_lms/views/Home/profilepage.dart';
 import 'package:flutter/material.dart';
 
@@ -13,11 +13,11 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
-  
+
   final List<Widget> _screens = [
-    const DashboardScreen(),  // Changed from HomeScreen to DashboardScreen
-    const ClassesScreen(),    // New screen for classes
-    const ExamScreen(),      // New screen for exams
+    const DashboardScreen(), // Changed from HomeScreen to DashboardScreen
+    const ClassesScreen(), // New screen for classes
+    const ExamScreen(), // New screen for exams
     const ProfileScreen(),
   ];
 

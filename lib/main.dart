@@ -1,14 +1,14 @@
-
-
+import 'package:corona_lms/firebase_options.dart';
 import 'package:corona_lms/views/Home/dashboard.dart';
 import 'package:corona_lms/views/Home/mainscreen.dart';
 import 'package:corona_lms/views/login.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-
-void main() {
+void main() async {
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
