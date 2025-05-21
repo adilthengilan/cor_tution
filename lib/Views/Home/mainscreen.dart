@@ -1,4 +1,5 @@
 import 'package:corona_lms/Views/Home/exam.dart';
+import 'package:corona_lms/views/TeacherHome/Attendencescreen.dart';
 import 'package:corona_lms/views/Home/classes.dart';
 import 'package:corona_lms/views/Home/dashboard.dart';
 import 'package:corona_lms/views/Home/profilepage.dart';
@@ -19,6 +20,7 @@ class _MainScreenState extends State<MainScreen> {
     const ClassesScreen(), // New screen for classes
     const ExamScreen(), // New screen for exams
     const ProfileScreen(),
+    // const AttendanceScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -54,11 +56,14 @@ class _MainScreenState extends State<MainScreen> {
             activeIcon: Icon(Icons.assignment),
             label: 'Exams',
           ),
-          BottomNavigationBarItem(
+           BottomNavigationBarItem(
             icon: Icon(Icons.person_outline),
             activeIcon: Icon(Icons.person),
             label: 'Profile',
           ),
+        
+         
+          
         ],
       ),
     );
