@@ -389,39 +389,42 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                     ),
                   ),
 
-               const SizedBox(height: 16),
-// Attendance summary cards
-Container(
-  height: 110,
-  child: ListView(
-    scrollDirection: Axis.horizontal,
-    children: [
-      _buildAttendanceCard(
-        'Present',
-        _currentAttendanceSummary['present'],
-        _currentAttendanceSummary['total'],
-        Colors.green,
-        Icons.check_circle,
-      ),
-      const SizedBox(width: 12),
-      _buildAttendanceCard(
-        'Absent',
-        _currentAttendanceSummary['absent'],
-        _currentAttendanceSummary['total'],
-        Colors.red,
-        Icons.cancel,
-      ),
-      const SizedBox(width: 12),
-      _buildAttendanceCard(
-        'Leave',
-        _currentAttendanceSummary['leave'],
-        _currentAttendanceSummary['total'],
-        Colors.orange,
-        Icons.schedule,
-      ),
-    ],
-  ),
-),
+                const SizedBox(height: 12),
+
+                // Fixed attendance summary cards - removed fixed height and width
+                Row(
+                  children: [
+                    Expanded(
+                      child: _buildAttendanceCard(
+                        'Present',
+                        _currentAttendanceSummary['present'],
+                        _currentAttendanceSummary['total'],
+                        Colors.green,
+                        Icons.check_circle,
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: _buildAttendanceCard(
+                        'Absent',
+                        _currentAttendanceSummary['absent'],
+                        _currentAttendanceSummary['total'],
+                        Colors.red,
+                        Icons.cancel,
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: _buildAttendanceCard(
+                        'Leave',
+                        _currentAttendanceSummary['leave'],
+                        _currentAttendanceSummary['total'],
+                        Colors.orange,
+                        Icons.schedule,
+                      ),
+                    ),
+                  ],
+                ),
 
                 const SizedBox(height: 16),
 
@@ -681,11 +684,10 @@ Container(
         total > 0 ? (count / total * 100).toStringAsFixed(1) : '0.0';
 
     return Container(
-      width: 150,
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.05),
@@ -700,35 +702,38 @@ Container(
         children: [
           Row(
             children: [
-              Icon(icon, color: color, size: 18),
-              const SizedBox(width: 8),
-              Text(
-                title,
-                style: TextStyle(
-                  color: color,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
+              Icon(icon, color: color, size: 16),
+              const SizedBox(width: 6),
+              Expanded(
+                child: Text(
+                  title,
+                  style: TextStyle(
+                    color: color,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 12,
+                  ),
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
             ],
           ),
-          const Spacer(),
+          const SizedBox(height: 8),
           Text(
             '$count',
             style: const TextStyle(
-              fontSize: 22,
+              fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
           ),
           const SizedBox(height: 2),
           Text(
-            '$percentage% of total',
+            '$percentage%',
             style: TextStyle(
               color: Colors.grey[600],
-              fontSize: 12,
+              fontSize: 10,
             ),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 6),
           LinearProgressIndicator(
             value: total > 0 ? count / total : 0,
             backgroundColor: Colors.grey[200],
@@ -925,6 +930,7 @@ Container(
       ),
     );
   }
+
 
   Widget _buildAttendanceCountChip(IconData icon, Color color, String count) {
     return Container(
