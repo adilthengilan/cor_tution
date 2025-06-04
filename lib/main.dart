@@ -1,6 +1,4 @@
 import 'package:corona_lms/firebase_options.dart';
-import 'package:corona_lms/views/Home/dashboard.dart';
-import 'package:corona_lms/views/Home/mainscreen.dart';
 import 'package:corona_lms/views/login.dart';
 import 'package:firebase_core/firebase_core.dart';
 
